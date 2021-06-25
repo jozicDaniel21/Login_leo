@@ -27,4 +27,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('verImagen/{user}/{imagen}', 'HomeController@verImagen')->name('ver.imagen');
     Route::post('comentar', 'HomeController@agregarComentario')->name('agregar.comentario');
     Route::get('eliminar/imagen/{user}/{imagen}', 'UserController@eliminarImagen')->name('eliminar.imagen');
+    Route::post('modificar/imagen', 'UserController@modificarImagen')->name('modificar.imagen');
 });

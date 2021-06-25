@@ -151,7 +151,37 @@
                       <td width="200px;">{{$image->name}}</td>
                       <td width="200px;">{{$image->extension}}</td>
                       <td>
+                          <a href="" data-toggle="modal"  class="btn btn-info" data-target="#modificarModal"><i class="fa fa-edit"></i></a>
+
                           <a href="{{route('eliminar.imagen', ['user' => $user->id, 'imagen' => $key])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+
+                            <div class="modal fade" id="modificarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Editar Imagen</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  {!! Form::open(['route' => 'modificar.imagen', 'files' => true]) !!}
+                                     <div class="modal-body">
+
+                                        {{Form::label('file','Selecciona la imagen.')}}
+                                        {{Form::file('file', ['class' => 'form-control',  'accept'=>"image/*" ])}}
+                                        {{Form::hidden('user_id', $user->id)}}
+                                        {{Form::hidden('imagen_id', $key)}}
+
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-primary">Agregar</button>
+                                      </div>
+                                  {!! Form::close() !!}
+                                </div>
+                              </div>
+                            </div>
+
                       </td>
                     </tr>
                 @endforeach         
@@ -162,7 +192,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar documento de Excel</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Agregar nueva imagen</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>

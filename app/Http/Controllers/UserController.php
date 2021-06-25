@@ -29,4 +29,17 @@ class UserController extends Controller
        $user = Auth::user();
        return view('Usuarios.index', compact('user'));
     }
+
+    public function modificarImagen(Request $request)
+    {
+    	$usuario = User::where('id', $request->user_id)->first();
+
+        $imagenes = $usuario->getMedia('UserProfile');
+        $imagenes[$request->imagen_id]->delete();
+
+        $usuario->addMediaFromRequest('file')->toMediaCollection('UserProfile');
+
+        return redirect(route('user.files'));
+
+    }
 }
