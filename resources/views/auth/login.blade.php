@@ -69,11 +69,13 @@
             </div>
             <div class="register-show">
                 <h2>Registrar</h2>
-                 <form method="post" action="{{ url('/register') }}">
+                 <form method="POST" action="{{ route('registrar') }}">
                     {{csrf_field()}}
-                    <input type="text" placeholder="Correo Electronico">
-                    <input type="password" placeholder="Contraseña">
-                    <input type="password" placeholder="Confirmar Contraseña">
+                    <input type="text" placeholder="Nombre" name="nombre" required>
+
+                    <input type="text" placeholder="Correo Electronico" name="email" required>
+                    <input type="password" placeholder="Contraseña" name="password" required>
+                    <input type="password" placeholder="Confirmar Contraseña" name="password_confirmation" required>
                     <input type="submit" class="btn btn-success"  value="Registrar">
                 </form>
             </div>

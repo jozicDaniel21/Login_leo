@@ -16,7 +16,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except(['general','verImagen']);
+        $this->middleware('auth', ['except' => ['general', 'verImagen', 'Registrar']]);
+        
     }
 
     /**
@@ -75,4 +76,5 @@ class HomeController extends Controller
 
         return redirect(route('ver.imagen', ['user'=>$request->user_id, 'imagen' => $request->imagen_id]));
     }
+
 }

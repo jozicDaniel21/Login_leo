@@ -17,6 +17,8 @@ Route::get('/', 'HomeController@general')->name('general');
 
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout');
+Route::post('/registar', 'UserController@Registrar')->name('registrar');
+Route::get('verImagen/{user}/{imagen}', 'HomeController@verImagen')->name('ver.imagen');
 
 
 Route::group(['middleware' => ['auth']], function () { 
