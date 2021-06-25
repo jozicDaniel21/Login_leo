@@ -126,7 +126,7 @@
                 <a  class="btn btn-success text-white" data-toggle="modal" data-target="#exampleModal">Agregar Nuevo</a>
             </div>
 
-            <div class="row" style="text-align: center;"> 
+            <!--<div class="row" style="text-align: center;"> 
                     @foreach($user->getMedia('UserProfile') as $key => $image)
                     <div class="col-sm-3">
                         <img  src="{{$image->getUrl()}}" width="200px;" height="200px;">
@@ -134,7 +134,29 @@
                     </div>
                     @endforeach
                 
-            </div>
+            </div>-->
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Imagen</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Tipo</th>
+                  <th scope="col">Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($user->getMedia('UserProfile') as $key => $image)
+                    <tr>
+                      <th><img  src="{{$image->getUrl()}}" width="100px;" height="100px;"></th>
+                      <td width="200px;">{{$image->name}}</td>
+                      <td width="200px;">{{$image->extension}}</td>
+                      <td>
+                          <a href="{{route('eliminar.imagen', ['user' => $user->id, 'imagen' => $key])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                      </td>
+                    </tr>
+                @endforeach         
+              </tbody>
+            </table>
         </div>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">

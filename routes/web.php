@@ -26,4 +26,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('agregarFiles', 'HomeController@agregarFile')->name('agregar.file');
     Route::get('verImagen/{user}/{imagen}', 'HomeController@verImagen')->name('ver.imagen');
     Route::post('comentar', 'HomeController@agregarComentario')->name('agregar.comentario');
+    Route::get('eliminar/imagen/{user}/{imagen}', 'UserController@eliminarImagen')->name('eliminar.imagen');
 });

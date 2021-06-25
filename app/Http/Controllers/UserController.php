@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Auth;
 
 class UserController extends Controller
 {
@@ -16,5 +17,16 @@ class UserController extends Controller
         ]);
 
         return redirect(route('user.files'));
+    }
+
+    public function eliminarImagen($user, $imagen)
+    {
+    	$usuario = User::where('id', $user)->first();
+
+        $imagenes = $usuario->getMedia('UserProfile');
+        $imagenes[$imagen]->delete();
+
+       $user = Auth::user();
+       return view('Usuarios.index', compact('user'));
     }
 }
